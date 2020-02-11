@@ -50,7 +50,9 @@ export class HomeComponent implements OnInit {
   search() {
     this.param = new HttpParams().set('age',this.form.controls['age'].value).set('name',this.form.controls['name'].value)
       .set('sport',this.form.controls['age'].value);
-    this.service.search(this.param).subscribe();
+    this.params='?age='+this.form.controls['age'].value+'?name='+this.form.controls['name'].value+
+     '?sport='+this.form.controls['sport'].value;
+    this.service.search(this.params).subscribe();
   }  
 
   getOlympiconsByNation() {

@@ -45,7 +45,7 @@ export class OlympicService {
 
 
   search(params){
-    return this.http.get<Nations[]>(this.url + 'api/olympicons/search2', params);
+    return this.http.get<Nations[]>(this.url + 'api/olympicons/search2'+ "?query=" + params);
   }
 
 }
