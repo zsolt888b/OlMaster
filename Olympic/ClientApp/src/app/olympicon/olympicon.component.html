@@ -1,0 +1,32 @@
+<p *ngIf="!olympicon"><em>Loading...</em></p>
+<table class='table'>
+  <thead>
+    <tr>
+
+      <th>Id</th>
+      <th>surname</th>
+      <th>forename</th>
+      <th>birthday</th>
+      <th>age</th>
+      <th>sport</th>
+      <th>natioinality</th>
+      <th>placing</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ olympicon?.id }}</td>
+      <td>{{ olympicon?.surname }}</td>
+      <td>{{ olympicon?.forename }}</td>
+      <td>{{ olympicon?.birthday | date:'yyyy-MM-dd'}}</td>
+      <td>{{ olympicon?.age }}</td>
+      <td>{{ enumtostring(olympicon?.sport) }}</td>
+      <td>{{ olympicon?.nationality }}</td>
+      <td>{{olympicon?.latestplacing}}</td>
+      <td>{{olympicon?.latestyear}}</td>
+    </tr>
+  </tbody>
+</table>
+<button class="btn" (click)="back()">Back</button>
+

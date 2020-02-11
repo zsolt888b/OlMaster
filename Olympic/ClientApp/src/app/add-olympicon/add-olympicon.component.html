@@ -1,0 +1,61 @@
+<div class="container">
+  <h1>Olympicon form</h1>
+  <form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+    <div class="form-group row">
+      <label class=" control-label col-md-12">Surname</label>
+      <div class="col-md-4">
+        <input type="text" class="form-control" formControlName="surname">
+      </div>
+      <span class="text-danger" *ngIf="surname.invalid && formDir.submitted">
+        Surname is required.
+      </span>
+    </div>
+
+    <div class="form-group row">
+      <label class=" control-label col-md-12">Forename</label>
+      <div class="col-md-4">
+        <input type="text" class="form-control" formControlName="forename">
+      </div>
+      <span class="text-danger" *ngIf="forename.invalid && formDir.submitted">
+        Forename is required.
+      </span>
+    </div>
+    <div class="form-group row">
+      <label class="control-label col-md-12" for="birthday">Birthday</label>
+      <div class="col-md-4">
+      <input type="datetime-local" class="form-control" formControlName="birthday" />
+      </div>
+   </div>
+    <div class="form-group row">
+      <label class="control-label col-md-12" for="nationality">Country</label>
+      <div class="col-md-4">
+      <select class="form-control" data-val="true" formControlName="nationality">
+        <option value="">--Select Country--</option>
+                <option *ngFor="let c of countries" value={{c.id}}>
+                    {{c.country}}
+                </option>
+      </select>
+      </div>
+      <span class="text-danger" *ngIf="nationality.invalid && formDir.submitted">
+        Country is required
+    </span>
+    </div>
+  <div class="form-group row">
+    <label class="control-label col-md-12" for="sport">Sport</label>
+    <div class="col-md-4">
+    <select class="form-control" data-val="true" formControlName="sport">
+      <option value="">--Select Sport--</option>
+              <option *ngFor="let s of sports" value={{s}}>
+                  {{s}}
+              </option>
+    </select>
+    </div>
+    <span class="text-danger" *ngIf="sport.invalid && formDir.submitted">
+      Sport is required
+  </span>
+  </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+    <button class="btn" (click)="cancel()">Cancel</button>
+
+  </form>
+</div>

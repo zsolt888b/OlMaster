@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Olympic.Core\Olympic.Core.csproj" />
+    <ProjectReference Include="..\Olympic.DAL\Olympic.DAL.csproj" />
+  </ItemGroup>
+
+</Project>

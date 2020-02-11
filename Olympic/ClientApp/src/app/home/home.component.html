@@ -1,0 +1,44 @@
+<p *ngIf="!nations"><em>Loading...</em></p>
+<p *ngIf="nations">
+<button class="btn" (click)="newOlympicon()">New Olympicon</button>
+</p>
+<table class='table' *ngIf="nations">
+  <thead>
+    <tr>
+      <th>Natioinality</th>
+      <th>Surname</th>
+      <th>Forename</th>
+      <th>Sport</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let nation of nations">
+      <td>{{ nation.nationality }}</td>
+        <td>
+          <tr *ngFor="let ol of nation.olympicons">
+            <td>{{ ol.surname }}</td>
+          </tr>
+        </td>
+        <td>
+          <tr *ngFor="let ol of nation.olympicons">
+            <td>{{ ol.forename }}</td>
+          </tr>
+        </td>
+        <td>
+          <tr *ngFor="let ol of nation.olympicons">
+            <td>{{ enumtostring(ol.sport) }}</td>
+          </tr>
+        </td>
+        <td>
+          <tr *ngFor="let ol of nation.olympicons">
+            <td><a [routerLink]="['/olympicon/', ol.id]">View</a> </td>
+          </tr>
+        </td>
+        <td>
+          <tr *ngFor="let ol of nation.olympicons">
+            <td><a [routerLink]="['/edit-olympicon/', ol.id]">Edit</a> </td>
+          </tr>
+        </td>
+    </tr>
+  </tbody>
+</table>
