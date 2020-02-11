@@ -123,20 +123,20 @@ namespace Olympic.BLL.Services
             return returnModel;
         }
 
-        public async Task<IEnumerable<OlympiconListModel>> Search2(int? age,string name,string nat)
+        public async Task<IEnumerable<OlympiconListModel>> Search2(int? age,string name,Sport? sport)
         {
 
             var olympicons = await _context.Olympicons.Include(x => x.Nationality).ToListAsync();
             var returnModel = new List<OlympiconListModel>();
 
-            if (age != null || name!=null || nat!=null )
+            if (age != null || name!=null || sport!=null )
             {
                 if (age.HasValue)
                     olympicons = olympicons.Where(x => x.Age == age).ToList();
                 if (!string.IsNullOrEmpty(name))
                     olympicons = olympicons.Where(x => (x.Surname + " " + x.Forename).Contains(name)).ToList();
-                if (string.IsNullOrEmpty(nat))
-                    olympicons = olympicons.Where(x => x.Nationality.Country == nat).ToList();
+                if (sport.HasValue)
+                    olympicons = olympicons.Where(x => x.Sport == sport).ToList();
             }
 
             var olympiconsbynations = olympicons.GroupBy(x => x.Nationality.Country);

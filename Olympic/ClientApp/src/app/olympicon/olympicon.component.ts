@@ -14,6 +14,7 @@ export class OlympiconComponent implements OnInit {
 
   public olympicon: DetailedOlympicon;
 
+  
   constructor( private _avRoute: ActivatedRoute,
     private service : OlympicService, private router : Router) {
   }

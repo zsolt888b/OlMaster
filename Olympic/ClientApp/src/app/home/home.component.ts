@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Nations } from '../models/nations';
 import { OlympicService } from '../olympic.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -18,6 +18,10 @@ export class HomeComponent implements OnInit {
   public url: string;
 
   public form: FormGroup;
+
+  public params : string;
+
+  public param : HttpParams;
 
   public sports: Array<string> = ["Archery", "Athletics",
     "Canoe",
@@ -44,7 +48,9 @@ export class HomeComponent implements OnInit {
   }
 
   search() {
-    this.service.search(this.form.get('name')).subscribe();
+    this.param = new HttpParams().set('age',this.form.controls['age'].value).set('name',this.form.controls['name'].value)
+      .set('sport',this.form.controls['age'].value);
+    this.service.search(this.param).subscribe();
   }  
 
   getOlympiconsByNation() {
