@@ -4,7 +4,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { DetailedOlympicon } from '../models/detailedolympicon';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Country } from '../models/country';
-import { Sport } from '../models/sport';
 
 @Component({
   selector: 'app-add-olympicon',

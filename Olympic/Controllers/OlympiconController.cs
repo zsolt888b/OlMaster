@@ -33,9 +33,7 @@ namespace Olympic.Controllers
         [HttpGet("search")]
         public async Task<IEnumerable<OlympiconListModel>> Search([FromQuery]SearchModel model)
             => await OlympiconService.Search(model);
-        [HttpGet("search2")]
-        public async Task<IEnumerable<OlympiconListModel>> Search2([FromQuery(Name = "age")]int? age, [FromQuery(Name = "name")]string name, [FromQuery(Name = "sport")]Sport? sport)
-            => await OlympiconService.Search2(age,name,sport);
+
 
         [HttpGet("{id}")]
         public async Task<OlympiconDetailedModel> GetOlympicon([FromRoute]int id)

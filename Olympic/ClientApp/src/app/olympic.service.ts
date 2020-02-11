@@ -1,6 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Olympicon } from './models/olympicon';
 import { Nations } from './models/nations';
 import { Country } from './models/country';
 import { DetailedOlympicon } from './models/detailedolympicon';
@@ -16,10 +15,6 @@ export class OlympicService {
     this.url = baseUrl    
   }
 
-  //getOlympicons(number) {
-  //  return this._http.get(this.url + 'api/olympicons/' + number).map(res => res.json());
-  //}
-
   getOlympicons(number) {
     return this.http.get<DetailedOlympicon>(this.url + 'api/olympicons/' + number);
   }
@@ -31,9 +26,6 @@ export class OlympicService {
   getNations() {
     return this.http.get<Country[]>(this.url + 'api/olympicons/nation');
   }
-  //getSports() {
-    //return this.http.get<Country[]>(this.url + 'api/olympicons/sports');
-  //}
 
   update(id,payload) {
     return this.http.put(this.url +'api/olympicons/' + id, payload);
@@ -45,7 +37,7 @@ export class OlympicService {
 
 
   search(params){
-    return this.http.get<Nations[]>(this.url + 'api/olympicons/search2'+ "?" + params);
+    return this.http.get<Nations[]>(this.url + 'api/olympicons/search'+ "?" + params);
   }
 
 }

@@ -39,9 +39,6 @@ namespace Olympic.BLL.Services
                 returnModel.Add(addItem);
             }
 
-            //var b = TryParse<Sport>("asd",true,Sport);
-            //Sport MyStatus = (Sport)Enum.Parse(typeof(Sport), "asd", true);
-
             return returnModel.OrderBy(x => x.Nationality);
         }
 
@@ -107,59 +104,9 @@ namespace Olympic.BLL.Services
                 returnModel.Add(add);
             }
 
-            //foreach (var item in olympicons)
-            //{
-            //    var addItem = new OlympiconModel
-            //    {
-            //        Id = item.Id,
-            //        Forename = item.Forename,
-            //        Surname = item.Surname,
-            //        Nationality = item.Nationality.Country,
-            //        Sport = item.Sport
-            //    };
-            //    returnModel.Add(addItem);
-            //}
-
             return returnModel;
         }
 
-        public async Task<IEnumerable<OlympiconListModel>> Search2(int? age,string name,Sport? sport)
-        {
-
-            var olympicons = await _context.Olympicons.Include(x => x.Nationality).ToListAsync();
-            var returnModel = new List<OlympiconListModel>();
-
-            if (age != null || name!=null || sport!=null )
-            {
-                if (age.HasValue)
-                    olympicons = olympicons.Where(x => x.Age == age).ToList();
-                if (!string.IsNullOrEmpty(name))
-                    olympicons = olympicons.Where(x => (x.Surname + " " + x.Forename).Contains(name)).ToList();
-                if (sport.HasValue)
-                    olympicons = olympicons.Where(x => x.Sport == sport).ToList();
-            }
-
-            var olympiconsbynations = olympicons.GroupBy(x => x.Nationality.Country);
-
-            foreach (var group in olympiconsbynations)
-            {
-                var add = new OlympiconListModel { Nationality = group.Key };
-                foreach (var item in group.ToList())
-                {
-                    var addItem = new OlympiconModel
-                    {
-                        Id = item.Id,
-                        Forename = item.Forename,
-                        Surname = item.Surname,
-                        Nationality = item.Nationality.Country,
-                        Sport = item.Sport
-                    };
-                    add.Olympicons.Add(addItem);
-                }
-                returnModel.Add(add);
-            }
-            return returnModel;
-        }
 
         public async Task<OlympiconDetailedModel> GetOlympicon(int id)
         {
