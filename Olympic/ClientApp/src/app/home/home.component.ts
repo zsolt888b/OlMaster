@@ -43,8 +43,8 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/add-olympicon/']);
   }
 
-  search() {  
-    this.service.search(this.form.value).subscribe();
+  search() {
+    this.service.search(this.form.get('name')).subscribe();
   }  
 
   getOlympiconsByNation() {
