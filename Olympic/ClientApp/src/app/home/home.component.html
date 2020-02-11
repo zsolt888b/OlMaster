@@ -1,7 +1,29 @@
 <p *ngIf="!nations"><em>Loading...</em></p>
-<p *ngIf="nations">
-<button class="btn" (click)="newOlympicon()">New Olympicon</button>
-</p>
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="search()" #formDir="ngForm" novalidate>
+    <div class="form-group row">
+      <label class=" control-label col-md-1">Name</label>
+      <div class="col-md-2">
+        <input type="text" class="form-control" formControlName="name">
+      </div>
+      <label class=" control-label col-md-1">Age</label>
+      <div class="col-md-1">
+        <input type="text" class="form-control" formControlName="age">
+      </div>
+      <label class="control-label col-md-1" for="sport">Sport</label>
+    <div class="col-md-2">
+    <select class="form-control" data-val="true" formControlName="sport">
+      <option value="">--Select Sport--</option>
+              <option *ngFor="let s of sports" value={{s}}>
+                  {{s}}
+              </option>
+    </select>
+    </div>
+    <button type="submit" class="btn btn-success">Search</button>
+    <button class="btn" (click)="newOlympicon()">New Olympicon</button>
+    </div>
+  </form>
+</div>
 <table class='table' *ngIf="nations">
   <thead>
     <tr>

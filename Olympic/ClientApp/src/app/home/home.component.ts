@@ -19,6 +19,15 @@ export class HomeComponent implements OnInit {
 
   public form: FormGroup;
 
+  public sports: Array<string> = ["Archery", "Athletics",
+    "Canoe",
+    "Cycling",
+    "Fencing",
+    "Judo",
+    "Rowing",
+    "Triathlon",
+    "Wrestling"];
+
   constructor(private service : OlympicService, private formBuilder: FormBuilder, private router : Router) {
     this.form = this.formBuilder.group(
       {
@@ -35,9 +44,7 @@ export class HomeComponent implements OnInit {
   }
 
   search() {  
-    this.service.search(this.form.value).subscribe(result =>{
-      //this.nations = result;
-    })
+    this.service.search(this.form.value).subscribe();
   }  
 
   getOlympiconsByNation() {

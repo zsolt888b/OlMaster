@@ -14,8 +14,6 @@ export class OlympiconComponent implements OnInit {
 
   public olympicon: DetailedOlympicon;
 
-  public v2: number;
-
   constructor( private _avRoute: ActivatedRoute,
     private service : OlympicService, private router : Router) {
   }
@@ -24,8 +22,6 @@ export class OlympiconComponent implements OnInit {
     if (this._avRoute.snapshot.params["id"]) {  
       this.service.getOlympicons((this._avRoute.snapshot.params["id"])).subscribe(result => {this.olympicon = result
       });
-      this.v2 = this._avRoute.snapshot.params["ad"];
-      this.v2 = this.v2+1;
     }
   }
 
