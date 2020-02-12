@@ -20,14 +20,19 @@ export class AddOlympiconComponent implements OnInit {
 
   public id: number;
 
-  public sports: Array<string> = ["Archery", "Athletics",
-    "Canoe",
-    "Cycling",
-    "Fencing",
-    "Judo",
-    "Rowing",
-    "Triathlon",
-    "Wrestling"];
+  public sportSelect : string;
+
+    public sports = [
+      {Key:"0",Value:"Archery"},
+      {Key:"1",Value:"Athletics"},
+      {Key:"2",Value:"Canoe"},
+      {Key:"3",Value:"Cycling"},
+      {Key:"4",Value:"Fencing"},
+      {Key:"5",Value:"Judo"},
+      {Key:"6",Value:"Rowing"},
+      {Key:"7",Value:"Triathlon"},
+      {Key:"8",Value:"Wrestling"},
+     ];
   
 
   constructor(private avRoute: ActivatedRoute, private router: Router,
@@ -38,8 +43,11 @@ export class AddOlympiconComponent implements OnInit {
           surname: ['', [Validators.required]],
           forename: ['', [Validators.required]],
           birthday: ['',[Validators.required]],
+          age: [''],
           sport: ['',[Validators.required]],
-          nationality: ['',[Validators.required]]
+          nationality: ['',[Validators.required]],
+          latestplacing: [''],
+          latestyear: ['']
         }
       )
 

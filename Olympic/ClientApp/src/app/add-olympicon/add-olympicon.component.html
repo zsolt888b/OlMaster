@@ -33,8 +33,8 @@
       <label class="control-label col-md-12" for="nationality">Country</label>
       <div class="col-md-4">
       <select class="form-control" data-val="true" formControlName="nationality">
-        <option value="">--Select Country--</option>
-                <option *ngFor="let c of countries" value={{c.id}}>
+                <option value="">--Select Country--</option>
+                <option *ngFor="let c of countries" value={{c.country}}>
                     {{c.country}}
                 </option>
       </select>
@@ -47,10 +47,10 @@
     <label class="control-label col-md-12" for="sport">Sport</label>
     <div class="col-md-4">
     <select class="form-control" data-val="true" formControlName="sport">
-      <option value="">--Select Sport--</option>
-              <option *ngFor="let s of sports" value={{s}}>
-                  {{s}}
-              </option>
+              <option value="">--Select Sport--</option>
+              <option *ngFor="let s of sports" value={{s.Key}}>
+                {{s.Value}}
+            </option>
     </select>
     </div>
     <span class="text-danger" *ngIf="sport.invalid && formDir.submitted">

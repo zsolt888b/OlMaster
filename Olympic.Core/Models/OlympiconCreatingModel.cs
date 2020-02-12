@@ -13,12 +13,10 @@ namespace Olympic.Core.Models
         [Required]
         public string Forename { get; set; }
         [Required]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Birthday { get; set; }
         [Required]
         public Sport Sport { get; set; }
         [Required]
-        public int Nationality { get; set; }
+        public string Nationality { get; set; }
     }
 }

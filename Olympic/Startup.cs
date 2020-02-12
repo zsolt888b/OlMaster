@@ -92,6 +92,13 @@ namespace Olympic
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Olympic");
             });
 
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetService <OlympicDbContext> ();
+                context.Database.Migrate();
+            }
+
+
             app.UseSpa(spa =>
             {
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Olympic.BLL.Extensions;
 using Olympic.Core.Models;
 using Olympic.Core.Models.Enums;
 using Olympic.Core.Services;
@@ -136,13 +137,13 @@ namespace Olympic.BLL.Services
         public async Task<int> NewOlympicon(OlympiconCreatingModel model)
         {
 
-            var nat = await _context.Nationalities.Where(x=>x.Id==model.Nationality).FirstOrDefaultAsync();
+            var nat = await _context.Nationalities.Where(x=>x.Country==model.Nationality).FirstOrDefaultAsync();
 
             var newOlympicon = new Olympicon
             {
                 Forename = model.Forename,
                 Surname = model.Surname,
-                Age = DateTime.Now.Year - model.Birthday.Year,
+                Age = model.Birthday.GetAge(),
                 Birthday = model.Birthday,
                 Nationality = nat,
                 Sport = model.Sport
@@ -162,13 +163,14 @@ namespace Olympic.BLL.Services
             if (editedOlympicon == null)
                 return;
 
-            var nat = await _context.Nationalities.Where(x => x.Id == model.Nationality).FirstOrDefaultAsync();
+            var nat = await _context.Nationalities.Where(x => x.Country == model.Nationality).FirstOrDefaultAsync();
 
             editedOlympicon.Birthday = model.Birthday;
             editedOlympicon.Forename = model.Forename;
             editedOlympicon.Nationality = nat;
             editedOlympicon.Sport = model.Sport;
             editedOlympicon.Surname = model.Surname;
+            editedOlympicon.Age = model.Birthday.GetAge();
 
             await _context.SaveChangesAsync();
         }

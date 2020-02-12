@@ -1,4 +1,4 @@
-<p *ngIf="!nations"><em>Loading...</em></p>
+
 <div class="container">
   <form [formGroup]="form" (ngSubmit)="search()" #formDir="ngForm" novalidate>
     <div class="form-group row">
@@ -24,6 +24,7 @@
     </div>
   </form>
 </div>
+<p *ngIf="!nations"><em>Loading...</em></p>
 <table class='table' *ngIf="nations">
   <thead>
     <tr>
