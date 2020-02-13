@@ -36,10 +36,13 @@ namespace Olympic.DAL.Database.Entities
 
 
             builder.HasData(
-                new Olympicon { Id = 1, Surname = "Doe", Forename = "John", Birthday= new DateTime(1995, 6, 30), Age= (DateTime.Now.Year-(new DateTime(1995,6,30)).Year) ,Sport=Sport.Archery, NationalityId=1},
-                new Olympicon { Id = 2, Surname = "Doe", Forename = "Jane", Birthday = new DateTime(1990, 5, 10), Age = (DateTime.Now.Year - (new DateTime(1990, 5, 10)).Year), Sport = Sport.Canoe, NationalityId=1},
-                new Olympicon { Id = 3, Surname = "Cycl", Forename = "Er", Birthday = new DateTime(1996, 11, 10), Age = (DateTime.Now.Year - (new DateTime(1995, 11, 10)).Year), Sport = Sport.Cycling, NationalityId=2},
-                new Olympicon { Id = 4, Surname = "Fig", Forename = "Ther", Birthday = new DateTime(1995, 7, 30), Age = (DateTime.Now.Year - (new DateTime(1995, 7, 30)).Year), Sport = Sport.Judo, NationalityId=3}
+                new Olympicon { Id = 1, Surname = "Doe", Forename = "John", Birthday = new DateTime(1995, 6, 30), Age = 24, Sport = Sport.Archery, NationalityId = 1 },
+                new Olympicon { Id = 2, Surname = "Doe", Forename = "Jane", Birthday = new DateTime(1990, 5, 10), Age = 29, Sport = Sport.Canoe, NationalityId = 1 },
+                new Olympicon { Id = 3, Surname = "Cycl", Forename = "Er", Birthday = new DateTime(1996, 11, 10), Age = 23, Sport = Sport.Cycling, NationalityId = 2 },
+                new Olympicon { Id = 4, Surname = "Fig", Forename = "Ther", Birthday = new DateTime(1995, 7, 30), Age = 24, Sport = Sport.Judo, NationalityId = 3 },
+                new Olympicon { Id = 5, Surname = "Someone", Forename = "Else", Birthday = new DateTime(1990, 7, 30), Age = 29, Sport = Sport.Archery, NationalityId = 3 },
+                new Olympicon { Id = 6, Surname = "Random", Forename = "Person", Birthday = new DateTime(1995, 7, 30), Age = 24, Sport = Sport.Rowing, NationalityId = 3 },
+                new Olympicon { Id = 7, Surname = "Surname", Forename = "Forename", Birthday = new DateTime(1995, 7, 30), Age = 24, Sport = Sport.Judo, NationalityId = 4 }
             );
         }
     }

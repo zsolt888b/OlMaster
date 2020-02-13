@@ -94,7 +94,7 @@ namespace Olympic
 
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
-                var context = serviceScope.ServiceProvider.GetService <OlympicDbContext> ();
+                var context = serviceScope.ServiceProvider.GetService<OlympicDbContext>();
                 context.Database.Migrate();
             }
 

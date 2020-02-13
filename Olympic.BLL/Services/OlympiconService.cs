@@ -23,7 +23,7 @@ namespace Olympic.BLL.Services
 
         public async Task<IEnumerable<OlympiconModel>> GetOlympicons()
         {
-            var Olympicons = await _context.Olympicons.Include(x=>x.Nationality).ToListAsync();
+            var Olympicons = await _context.Olympicons.Include(x => x.Nationality).ToListAsync();
 
             var returnModel = new List<OlympiconModel>();
 
@@ -71,8 +71,8 @@ namespace Olympic.BLL.Services
 
         public async Task<IEnumerable<OlympiconListModel>> Search(SearchModel model)
         {
-            
-            var olympicons = await _context.Olympicons.Include(x=>x.Nationality).ToListAsync();
+
+            var olympicons = await _context.Olympicons.Include(x => x.Nationality).ToListAsync();
             var returnModel = new List<OlympiconListModel>();
 
             if (model != null)
@@ -137,7 +137,7 @@ namespace Olympic.BLL.Services
         public async Task<int> NewOlympicon(OlympiconCreatingModel model)
         {
 
-            var nat = await _context.Nationalities.Where(x=>x.Country==model.Nationality).FirstOrDefaultAsync();
+            var nat = await _context.Nationalities.Where(x => x.Country == model.Nationality).FirstOrDefaultAsync();
 
             var newOlympicon = new Olympicon
             {
@@ -181,9 +181,9 @@ namespace Olympic.BLL.Services
 
             var returnModel = new List<NationalityModel>();
 
-            foreach(var nat in nations)
+            foreach (var nat in nations)
             {
-                returnModel.Add(new NationalityModel { Id=nat.Id, Country=nat.Country});
+                returnModel.Add(new NationalityModel { Id = nat.Id, Country = nat.Country });
             }
 
             return returnModel;

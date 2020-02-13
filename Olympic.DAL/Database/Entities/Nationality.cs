@@ -22,7 +22,7 @@ namespace Olympic.DAL.Database.Entities
             builder.HasData(
                 new Nationality { Id = 1, Country = "USA" },
                 new Nationality { Id = 2, Country = "GRB" },
-                new Nationality { Id = 3, Country = "HUH" },
+                new Nationality { Id = 3, Country = "HUN" },
                 new Nationality { Id = 4, Country = "FR" }
             );
         }
